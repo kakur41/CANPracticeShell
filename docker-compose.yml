@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  rabbitmq:
+    image: "rabbitmq"
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+
+  canshell:
+      build:
+        context: .
+        dockerfile: Dockerfile
+      ports:
+        - "12345:12345"
+      depends_on:
+        - rabbitmq
